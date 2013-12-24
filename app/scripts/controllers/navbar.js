@@ -7,6 +7,10 @@ angular.module('perfinsterApp')
       'link': '/'
     },
     {
+      'title': 'Transactions',
+      'link': '#/transactions'
+    },
+    {
       'title': 'About',
       'link': '#'
     },
