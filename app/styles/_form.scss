@@ -1,0 +1,29 @@
+.form-actions {
+  padding: 19px 20px 20px;
+  margin: 20px -20px -20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  *zoom: 1;
+  
+  button {
+    @include button-base;
+    @include button-size($button-sml, false, false);
+    margin-bottom: 0;
+  }
+}
+
+.form-actions:before,
+.form-actions:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.form-actions:after {
+  clear: both;
+}
+
+button i {
+  padding-right: 5px;
+  vertical-align: middle;
+}

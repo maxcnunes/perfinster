@@ -5,5 +5,7 @@
 }
 
 #transaction-add {
-  
+  button[type="submit"] {
+    @extend .success;
+  }
 }
