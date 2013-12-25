@@ -16,6 +16,10 @@ angular.module('perfinsterApp', [
         templateUrl: 'partials/transaction-list',
         controller: 'TransactionListCtrl'
       })
+      .when('/transactions/add', {
+        templateUrl: 'partials/transaction-add',
+        controller: 'TransactionAddCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
