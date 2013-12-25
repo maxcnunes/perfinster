@@ -1,4 +1,6 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+@import '../bower_components/foundation/scss/foundation';
+@import 'navbar';
+@import 'transaction';
 
 .browsehappy {
     margin: 0.2em 0;
@@ -11,6 +13,21 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+#container {
+    @include grid-row();
+}
+
+#logo-icon {
+    background: #4fba6f;
+    color: #f1e912;
+    padding: 10px;
+    font-size: 3em;
+    width: 110px;
+    display: inline-block;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -51,11 +68,6 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-
 /* Supporting marketing content */
 .marketing {
     margin: 40px 0;
@@ -67,10 +79,6 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
-
     /* Remove the padding we set earlier */
     .header,
     .marketing,
