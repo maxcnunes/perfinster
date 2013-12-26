@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('perfinsterApp')
-  .controller('TransactionAddCtrl', function ($scope, $http) {
-    $http.get('/api/transactions').success(function(transactions) {
-      $scope.transactions = transactions;
-    });
+  .controller('TransactionAddCtrl', function ($scope, $http, $location, TransactionService) {
+    $scope.save = function () {
+      TransactionService.create($scope.transaction);
+      $location.path('/transactions');
+    };
   });
