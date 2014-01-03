@@ -5,7 +5,8 @@ angular.module('perfinsterApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'angularFileUpload'
+  'angularFileUpload',
+  'siyfion.sfTypeahead'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
