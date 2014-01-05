@@ -34,7 +34,7 @@
                 <!-- <td>{{transaction.status}}</td> -->
                 <td>{{transaction.type}}</td>
                 <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
-                <td>{{transaction.amount | currency}}</td>
+                <td ng-class="transaction.type.toLowerCase()">{{transaction.amount | currency}}</td>
                 <td>{{transaction.memo}}</td>
                 <td><input type="text" placeholder="Transport" class="sfTypeahead" datasets="exampleData" ng-model="foo"></td>
                 <!--<td><input type="checkbox" /></td>-->

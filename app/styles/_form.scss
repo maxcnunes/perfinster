@@ -1,3 +1,9 @@
+$debit-color: #f04124;
+$credit-color: #43ac6a;
+
+.debit { color: $debit-color; }
+.credit { color: $credit-color; }
+
 .form-actions {
   padding: 19px 20px 20px;
   margin: 20px -20px -20px;
