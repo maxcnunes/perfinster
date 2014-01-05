@@ -13,7 +13,7 @@
             <thead>
               <tr>
                 <th>Action</th>
-                <!-- <th>Status</th> -->
+                <th>Status</th>
                 <th>Type</th>
                 <th>Date Posted</th>
                 <th>Amount</th>
@@ -23,20 +23,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="transaction in transactions">
+              <tr ng-repeat="transaction in transactions" ng-class="{ disabled: isDisabled(transaction) }">
                 <td>
-                  <select>
-                    <option value="active">Active</option>
-                    <option value="ignore">Ignore</option>
-                    <option value="nothing">Nothing</option>
-                  </select>
+                  <select ng-model="transaction.action" ng-options="action for action in actions" ng-disabled="isDisabled(transaction)"></select>
                 </td>
-                <!-- <td>{{transaction.status}}</td> -->
+                <td>{{transaction.statusDesc}}</td>
                 <td>{{transaction.type}}</td>
                 <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
                 <td ng-class="transaction.type.toLowerCase()">{{transaction.amount | currency}}</td>
                 <td>{{transaction.memo}}</td>
-                <td><input type="text" placeholder="Transport" class="sfTypeahead" datasets="categories"></td>
+                <td><input type="text" placeholder="Transport" class="sfTypeahead" datasets="categories" ng-disabled="isDisabled(transaction)"></td>
                 <!--<td><input type="checkbox" /></td>-->
               </tr>
             </tbody>
@@ -44,7 +40,7 @@
         </div>
       </div>
       <div class="form-actions">
-        <button ng-click="import()"> <i class="foundicon-checkmark"></i>
+        <button ng-click="save()"> <i class="foundicon-checkmark"></i>
           Confirm
         </button>
 

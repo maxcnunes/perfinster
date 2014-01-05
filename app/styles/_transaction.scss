@@ -1,3 +1,13 @@
+$debit-color: #f04124;
+$credit-color: #43ac6a;
+
+.debit { color: $debit-color; }
+.credit { color: $credit-color; }
+
+tr.disabled {
+  background: #ededed;
+}
+
 #transaction-list {
   table {
     width: 100%;

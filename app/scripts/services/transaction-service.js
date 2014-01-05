@@ -21,9 +21,9 @@ angular.module('perfinsterApp')
       return $http.delete(httpPath + '/' + id);
     },
     onCreateUpdate = function (model) {
-      model.amount = Number(model.amount.replace(/[^0-9\.]+/g,''));
+      model.amount = Number((model.amount+'').replace(/[^0-9\.]+/g,''));
     },
-    importFile = function (files, uploader, callback) {
+    extractRead = function (files, uploader, callback) {
       return uploader.upload({
         url: httpPath + '/extract/read',
         headers: {},
@@ -31,6 +31,18 @@ angular.module('perfinsterApp')
       }).progress(function(evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(callback);
+    },
+    extractImport = function (transactions) {
+      transactions.forEach(onCreateUpdate);
+      return $http.post(httpPath + '/extract/import', transactions);
+    },
+    getStatusDesc = function (transaction) {
+      var status = {
+        1: 'Activated',
+        2: 'Importing',
+        3: 'Ignored'
+      };
+      return status[transaction.status];
     };
 
     return {
@@ -39,6 +51,8 @@ angular.module('perfinsterApp')
       create: create,
       update: update,
       remove: remove,
-      importFile: importFile
+      extractRead: extractRead,
+      extractImport: extractImport,
+      getStatusDesc: getStatusDesc
     };
   });
