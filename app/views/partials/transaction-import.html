@@ -1,0 +1,62 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div id="transaction-import">
+  <h1></h1>
+  <form>
+    <fieldset>
+      <legend>Transactions</legend>
+      <div class="row">
+        <div class="large-12 columns">
+          <p>Import Itau extract file.</p>
+          <input type="file" ng-file-select="onFileSelect($files)" >
+          <table ng-show="transactions">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <!-- <th>Status</th> -->
+                <th>Type</th>
+                <th>Date Posted</th>
+                <th>Amount</th>
+                <th>Desc</th>
+                <th>Category</th>
+                <!-- <th>Auto<br/>Categorize</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="transaction in transactions">
+                <td>
+                  <select>
+                    <option value="active">Active</option>
+                    <option value="ignore">Ignore</option>
+                    <option value="nothing">Nothing</option>
+                  </select>
+                </td>
+                <!-- <td>{{transaction.status}}</td> -->
+                <td>{{transaction.type}}</td>
+                <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
+                <td>{{transaction.amount | currency}}</td>
+                <td>{{transaction.memo}}</td>
+                <td><input type="text" placeholder="Transport" class="sfTypeahead" datasets="exampleData" ng-model="foo"></td>
+                <!--<td><input type="checkbox" /></td>-->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button ng-click="import()"> <i class="foundicon-checkmark"></i>
+          Confirm
+        </button>
+
+        <button ng-click="back()"> <i class="foundicon-left-arrow"></i>
+          Back
+        </button>
+        <i class="foundicon-asterisk" data-bind="visible: hasChanges"></i>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="footer">
+  <p>♥ from the Yeoman team</p>
+</div>

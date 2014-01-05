@@ -1,0 +1,55 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div id="transaction-add">
+  <h1></h1>
+  <form>
+    <fieldset>
+      <legend>Transactions</legend>
+
+      <div class="row">
+        <div class="large-4 columns">
+          <label>Transaction Type</label>
+          <input type="radio" name="type" value="DEBIT" id="debit" ng-model="transaction.type">
+          <label for="debit">Debit</label>
+          <input type="radio" name="type" value="CREDIT" id="credit" ng-model="transaction.type">
+          <label for="credit">Credit</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Amount</label>
+          <input type="text" placeholder="0,00" ng-model="transaction.amount" mask="decimal-us" />
+        </div>
+        <div class="large-6 columns">
+          <label>Date</label>
+          <input type="text" placeholder="01/11/2010" ng-model="transaction.dateCreated" mask="date" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Description</label>
+          <textarea placeholder="This was..." ng-model="transaction.memo"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button ng-click="save()"> <i class="foundicon-checkmark"></i>
+          Save
+        </button>
+
+        <button ng-click="reset()"> <i class="foundicon-error"></i>
+          Cancel
+        </button>
+
+        <button ng-click="back()">
+          <i class="foundicon-left-arrow"></i>
+          Back
+        </button>
+        <i class="foundicon-asterisk" data-bind="visible: hasChanges"></i>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="footer">
+  <p>♥ from the Yeoman team</p>
+</div>

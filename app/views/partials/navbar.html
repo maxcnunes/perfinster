@@ -1,0 +1,12 @@
+<div id="header"  ng-controller="NavbarCtrl">
+  <div id="logo">
+    <h1>perfinster</h1>
+  </div>
+  <div id="menu">
+    <ul>
+      <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+          <a ng-href="{{item.link}}">{{item.title}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
