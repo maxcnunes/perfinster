@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('perfinsterApp')
-  .service('TransactionService', function TransactionService($http) {
-    var httpPath = '/api/transactions',
+  .service('CategoryService', function CategoryService($http) {
+    var httpPath = '/api/categories',
     getAll = function(){
       return $http.get(httpPath);
     },
@@ -10,18 +10,13 @@ angular.module('perfinsterApp')
       return $http.get(httpPath + '/' + id);
     },
     create = function(model){
-      onCreateUpdate(model);
       return $http.post(httpPath, model);
     },
     update = function(model){
-      onCreateUpdate(model);
       return $http.put(httpPath + '/' + model.id, model);
     },
     remove = function(id){
       return $http.delete(httpPath + '/' + id);
-    },
-    onCreateUpdate = function (model) {
-      model.amount = Number(model.amount.replace(/[^0-9\.]+/g,''));
     };
 
     return {

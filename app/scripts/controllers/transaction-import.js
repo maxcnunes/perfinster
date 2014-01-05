@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('perfinsterApp')
-.controller('TransactionImportCtrl', function ($scope, $http, $upload) {
+.controller('TransactionImportCtrl', function ($scope, $http, $upload, $location, CategoryService) {
   $scope.back = function () {
     $location.path('/transactions');
   };
@@ -15,25 +15,17 @@ angular.module('perfinsterApp')
     }).progress(function(evt) {
       console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
     }).success(function(data, status, headers, config) {
-      $scope.transactions = data;
+      CategoryService.getAll().success(function(categories) {
+        $scope.transactions = data;
+        $scope.exampleData = {
+          name: 'categories',
+          local: categories.map(function(category) { return category.name; })
+        };
+      });
     });
   };
 
-  $scope.exampleData = {
-    name: 'accounts',
-    local: ['1 - House', '1.1 - Internet', '2 - Transport']
-  };
-
-  $scope.multiExample = [
-  {
-    name: 'accounts',
-    prefetch: 'https://twitter.com/network.json',
-    remote: 'https://twitter.com/accounts?q=%QUERY'
-  },
-  {
-    name: 'trends',
-    prefetch: 'https://twitter.com/trends.json'
-  }];
+  
 
   $scope.foo = null;
 });

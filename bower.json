@@ -13,7 +13,8 @@
     "foundation": "~5.0.2",
     "foundation-icons": "*",
     "jquery-meiomask": "~1.1.13",
-    "angular-typeahead": "~0.0.12"
+    "angular-typeahead": "~0.0.12",
+    "ng-file-upload": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
