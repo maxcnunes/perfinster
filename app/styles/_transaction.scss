@@ -25,3 +25,8 @@ tr.disabled {
     width: 100%;
   }
 }
+
+#summary {
+  #debit .title { background: $debit-color;}
+  #credit .title { background: $credit-color;}
+}

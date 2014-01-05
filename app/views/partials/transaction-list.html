@@ -1,5 +1,3 @@
-<div ng-include="'partials/navbar'"></div>
-
 <div id="transaction-list">
   <h1>Transactions
     <a href="#/transactions/add" class="button success tiny right"><i class="foundicon-add-doc"></i>
@@ -13,23 +11,18 @@
     <thead>
       <tr>
         <th>Type</th>
-        <th>Date Posted</th>
         <th>Amount</th>
+        <th>Date Posted</th>
         <th>Desc</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="transaction in transactions">
-        <td>{{transaction.type}}</td>
+        <td ng-class="transaction.type.toLowerCase()">{{transaction.type}}</td>
+        <td ng-class="transaction.type.toLowerCase()">{{transaction.amount | currency}}</td>
         <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
-        <td>{{transaction.amount | currency}}</td>
         <td>{{transaction.memo}}</td>
       </tr>
     </tbody>
   </table>
-</div>
-
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
 </div>

@@ -9,14 +9,6 @@ angular.module('perfinsterApp')
     {
       'title': 'Transactions',
       'link': '#/transactions'
-    },
-    {
-      'title': 'About',
-      'link': '#'
-    },
-    {
-      'title': 'Contact',
-      'link': '#'
     }];
 
     $scope.isActive = function(route) {

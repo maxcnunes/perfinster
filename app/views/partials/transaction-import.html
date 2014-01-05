@@ -1,5 +1,3 @@
-<div ng-include="'partials/navbar'"></div>
-
 <div id="transaction-import">
   <h1></h1>
   <form>
@@ -38,9 +36,33 @@
             </tbody>
           </table>
         </div>
+
+        <div id="summary" ng-show="transactions">
+          <ul class="small-block-grid-3">
+            <li>
+              <ul id="credit" class="pricing-table">
+                <li class="title">Credit</li>
+                <li class="price">{{ totalCredit() | currency }}</li>
+              </ul>
+            </li>
+            <li>
+              <ul id="debit" class="pricing-table">
+                <li class="title">Debit</li>
+                <li class="price">{{ totalDebit() | currency }}</li>
+              </ul>
+            </li>
+            <li>
+              <ul class="pricing-table">
+                <li class="title">Total</li>
+                <li class="price">{{ total() | currency }}</li>
+              </ul>
+            </li>
+          </ul>
+          
+        </div>
       </div>
       <div class="form-actions">
-        <button ng-click="save()"> <i class="foundicon-checkmark"></i>
+        <button ng-click="save()" ng-show="transactions"> <i class="foundicon-checkmark"></i>
           Confirm
         </button>
 
@@ -51,8 +73,4 @@
       </div>
     </fieldset>
   </form>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
 </div>

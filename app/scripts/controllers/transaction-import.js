@@ -36,4 +36,32 @@ angular.module('perfinsterApp')
     } 
     return false;
   };
+
+  $scope.totalCredit = function () {
+    if (!$scope.transactions) { return 0; };
+
+    var total = 0;
+    $scope.transactions.forEach(function (trans) {
+      if (trans.type === 'CREDIT') {
+        total += trans.amount;
+      }
+    });
+    return total;
+  };
+
+  $scope.totalDebit = function () {
+    if (!$scope.transactions) { return 0; };
+    
+    var total = 0;
+    $scope.transactions.forEach(function (trans) {
+      if (trans.type === 'DEBIT') {
+        total += trans.amount;
+      }
+    });
+    return total;
+  };
+
+  $scope.total = function () {
+    return $scope.totalCredit() - $scope.totalDebit();
+  };
 });
