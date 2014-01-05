@@ -29,14 +29,14 @@ describe('API::TRANSACTIONS', function(){
   describe('POST /api/transactions/import', function(){
     it('responds with success', function(done){
       request(app)
-        .post('/api/transactions/import')
+        .post('/api/transactions/extract/read')
         .attach('file', __dirname + '/../../fixtures/extract.ofx')
         .expect(200, done);
     });
 
     it('responds with bad request when not send a file', function(done){
       request(app)
-        .post('/api/transactions/import')
+        .post('/api/transactions/extract/read')
         .expect(400, done);
     });
   });

@@ -22,6 +22,15 @@ angular.module('perfinsterApp')
     },
     onCreateUpdate = function (model) {
       model.amount = Number(model.amount.replace(/[^0-9\.]+/g,''));
+    },
+    importFile = function (files, uploader, callback) {
+      return uploader.upload({
+        url: httpPath + '/extract/read',
+        headers: {},
+        file: files[0],
+      }).progress(function(evt) {
+        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+      }).success(callback);
     };
 
     return {
@@ -29,6 +38,7 @@ angular.module('perfinsterApp')
       getById: getById,
       create: create,
       update: update,
-      remove: remove
+      remove: remove,
+      importFile: importFile
     };
   });
