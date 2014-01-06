@@ -13,6 +13,7 @@
         <th>Type</th>
         <th>Amount</th>
         <th>Date Posted</th>
+        <th>Category</th>
         <th>Desc</th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
         <td ng-class="transaction.type.toLowerCase()">{{transaction.type}}</td>
         <td ng-class="transaction.type.toLowerCase()">{{transaction.amount | currency}}</td>
         <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
+        <td>{{transaction.category ? transaction.category.name : '-'}}</td>
         <td>{{transaction.memo}}</td>
       </tr>
     </tbody>
