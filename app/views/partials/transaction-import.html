@@ -30,7 +30,10 @@
                 <td ng-class="transaction.type.toLowerCase()">{{transaction.amount | currency}}</td>
                 <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
                 <td>{{transaction.memo}}</td>
-                <td><input type="text" placeholder="Transport" class="sfTypeahead" datasets="categories" ng-disabled="isDisabled(transaction)"></td>
+                <td>
+                  <input type="text" class="sfTypeahead" datasets="categories" 
+                              ng-disabled="isDisabled(transaction)" ng-model="transaction.categoryName">
+                </td>
                 <!--<td><input type="checkbox" /></td>-->
               </tr>
             </tbody>
