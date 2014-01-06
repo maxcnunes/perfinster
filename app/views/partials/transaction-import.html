@@ -13,8 +13,8 @@
                 <th>Action</th>
                 <th>Status</th>
                 <th>Type</th>
-                <th>Date Posted</th>
                 <th>Amount</th>
+                <th>Date Posted</th>
                 <th>Desc</th>
                 <th>Category</th>
                 <!-- <th>Auto<br/>Categorize</th> -->
@@ -26,9 +26,9 @@
                   <select ng-model="transaction.action" ng-options="action for action in actions" ng-disabled="isDisabled(transaction)"></select>
                 </td>
                 <td>{{transaction.statusDesc}}</td>
-                <td>{{transaction.type}}</td>
-                <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
+                <td ng-class="transaction.type.toLowerCase()">{{transaction.type}}</td>
                 <td ng-class="transaction.type.toLowerCase()">{{transaction.amount | currency}}</td>
+                <td>{{transaction.datePosted | date: 'dd/MM/yyyy'}}</td>
                 <td>{{transaction.memo}}</td>
                 <td><input type="text" placeholder="Transport" class="sfTypeahead" datasets="categories" ng-disabled="isDisabled(transaction)"></td>
                 <!--<td><input type="checkbox" /></td>-->

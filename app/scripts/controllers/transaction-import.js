@@ -42,9 +42,7 @@ angular.module('perfinsterApp')
 
     var total = 0;
     $scope.transactions.forEach(function (trans) {
-      if (trans.type === 'CREDIT') {
-        total += trans.amount;
-      }
+      if (isToSum(trans, 'CREDIT')) { total += trans.amount; }
     });
     return total;
   };
@@ -54,11 +52,15 @@ angular.module('perfinsterApp')
     
     var total = 0;
     $scope.transactions.forEach(function (trans) {
-      if (trans.type === 'DEBIT') {
-        total += trans.amount;
-      }
+      if (isToSum(trans, 'DEBIT')) { total += trans.amount; }
     });
     return total;
+  };
+
+  var ACTIVED = 1;
+  var isToSum = function (trans, type) {
+    return (trans.action === $scope.actions[0] || trans.status === ACTIVED) 
+                && trans.type === type;
   };
 
   $scope.total = function () {
